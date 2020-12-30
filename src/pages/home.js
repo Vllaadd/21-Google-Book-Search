@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Books from '../components/books/Books.js';
+
 
 function Home(){
     const [books, updateBooks] = useState([]);
     const [searchCriteria, updateCriteria] = useState('');
 
-    const handleSubmit =e => {
+    const handleSubmit = e => {
         e.prevetnDefault();
         axios
         .get('/api/serch', {
@@ -13,11 +15,10 @@ function Home(){
                 q: searchCriteria
             }
         })
-        .then(data.json)
+        .then(e.json)
     };
     return(
         <div>
-      <Navigation />
 
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
@@ -50,3 +51,5 @@ function Home(){
     </div>
     )
 }
+
+export default Home;

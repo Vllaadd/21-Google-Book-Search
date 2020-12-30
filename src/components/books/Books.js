@@ -1,6 +1,8 @@
 import React from 'react';
+import Book from '../book/Book.js';
 
-const Books = ({ books, location, refresh }) => (
+
+const Books = ({ books }) => (
     <div>
         {books.map((book, i) => (
             <Book book={book} />
