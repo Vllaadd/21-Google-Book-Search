@@ -1,5 +1,6 @@
 //===DEPENDENCIES=======================
 const express = require('express');
+const routes = require('./')
 const cors = require('cors');
 const mongoose = require('mongoose');
 
