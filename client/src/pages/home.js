@@ -1,6 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Books from '../components/books/Books.js';
+import Navigation from '../components/nav.js';
+
+const formatBooks = books =>
+  books.map(
+    ({
+      id,
+      volumeInfo: {
+        imageLinks: { thumbnail }
+      },
+      volumeInfo
+    }) => {
+      return {
+        googleID: id,
+        thumbnail,
+        ...volumeInfo
+      };
+    }
+  );
 
 
 function Home(){
@@ -15,10 +33,14 @@ function Home(){
                 q: searchCriteria
             }
         })
-        .then(e.json)
+        .then(({ data }) => {
+          const formattedBooks = formatBooks(data);
+          updateBooks(formattedBooks);
+        });
     };
     return(
         <div>
+          <Navigation />
 
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
