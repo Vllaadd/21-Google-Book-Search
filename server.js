@@ -1,6 +1,6 @@
 //===DEPENDENCIES=======================
 const express = require('express');
-const routes = require('./')
+const { findAll } = require('./controllers/googleAPI.js');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
@@ -12,6 +12,8 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("client/build"));
+
+app.get('/', findAll);
 
 //===CONNECTING TO MONGODB======================================
 mongoose.connect('mongodb+srv://Vlad:columbia20mongo@cluster0.xm9q3.mongodb.net/booksearch?retryWrites=true&w=majority', 
