@@ -4,7 +4,9 @@ import './App.css';
 
 function App() {
   return (
-    <Home />
+    <Router>
+      <Home />
+    </Router>
   );
 }
 
