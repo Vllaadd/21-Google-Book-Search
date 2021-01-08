@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Book =({
-    book: {title, authors}
+    book: {title, authors, description, thumbnail, infoLink, googleID, _id},
+    location, 
+    refresh
 }) => (
     <div className="card">
     <div className="card-header book-title">{title}</div>
