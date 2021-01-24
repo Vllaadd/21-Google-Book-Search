@@ -1,6 +1,6 @@
 //===DEPENDENCIES=======================
 const express = require('express');
-const { findAll } = require('./controllers/googleAPI.js');
+// const { findAll } = require('../controllers/googleAPI.js');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
@@ -13,7 +13,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("client/build"));
 
-app.get('/', findAll);
+app.get('/', (req, res) =>{
+  res.send('Hello Google Book Search');
+});
 
 //===CONNECTING TO MONGODB======================================
 mongoose.connect('mongodb+srv://Vlad:columbia20mongo@cluster0.xm9q3.mongodb.net/booksearch?retryWrites=true&w=majority', 
