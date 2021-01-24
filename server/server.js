@@ -19,6 +19,10 @@ app.use(express.static("client/build"));
 app.use("/api/books", booksRoute);
 app.use("/api/search", searchRoute);
 
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 //===CONNECTING TO MONGODB======================================
 mongoose.connect('mongodb+srv://Vlad:columbia20mongo@cluster0.xm9q3.mongodb.net/booksearch?retryWrites=true&w=majority', 
 {
