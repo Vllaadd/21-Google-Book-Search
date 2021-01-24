@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const { findAll } = require('../controllers/googleAPI.js');
 const searchRoute = require("./routes/search");
 const booksRoute = require("./routes/books");
 

@@ -1,5 +1,5 @@
-const db = require('../server/models');
-const makeRequest = require(''../server/utils/makeRequest');
+const db = require("../models");
+const makeRequest = require('../utils/makeRequest');
 
 const checkBookIntegrity = books => {
   return books.filter(
