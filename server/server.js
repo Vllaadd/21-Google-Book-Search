@@ -1,8 +1,11 @@
 //===DEPENDENCIES=======================
 const express = require('express');
-// const { findAll } = require('../controllers/googleAPI.js');
 const cors = require('cors');
 const mongoose = require('mongoose');
+
+const { findAll } = require('../controllers/googleAPI.js');
+const searchRoute = require("./routes/search");
+const booksRoute = require("./routes/books");
 
 const app = express();
 
@@ -13,9 +16,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("client/build"));
 
-app.get('/', (req, res) =>{
-  res.send('Hello Google Book Search');
-});
+
+app.use("/api/books", booksRoute);
+app.use("/api/search", searchRoute);
 
 //===CONNECTING TO MONGODB======================================
 mongoose.connect('mongodb+srv://Vlad:columbia20mongo@cluster0.xm9q3.mongodb.net/booksearch?retryWrites=true&w=majority', 
@@ -35,5 +38,5 @@ mongoose.connection.once('open', function(){
 
 //===LISTENING THE SERVER========================================
 app.listen(PORT, () =>{
-    console.log(`API Server now listening on PORT: http://localhost${PORT}`);
+    console.log(`API Server now listening on PORT: http://localhost:${PORT}`);
 });

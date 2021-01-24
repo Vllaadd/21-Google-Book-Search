@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const { searchByParam } = require("../../controllers/googleAPI");
+const { searchByParam } = require("../controllers/googleAPI");
 
 router.get("/", searchByParam);
 

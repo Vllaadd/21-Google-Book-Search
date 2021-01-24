@@ -1,5 +1,5 @@
 const db = require('../server/models');
-const makeRequest = require("../server/utils/makeRequest");
+const makeRequest = require(''../server/utils/makeRequest');
 
 const checkBookIntegrity = books => {
   return books.filter(
@@ -24,7 +24,7 @@ const filterDuplicates = (newBooks, existingBooks) =>
 module.exports = {
   searchByParam: function(req, res) {
     const { query: params } = req;
-    makeRequest("https://www.googleapis.com/books/v1/volumes", params)
+    makeRequest('https://www.googleapis.com/books/v1/volumes', params)
       .then(({ data: { items: books } }) => checkBookIntegrity(books))
       .then(newBooks =>
         db.Book.find().then(existingBooks =>
